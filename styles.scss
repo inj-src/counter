@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Old+Permic&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-1: #444;
+    --color-2: #666;
+    --color-3: #777;
+    --color-4: #99999960;
+    --color-5: #99999933;
+}
+
+html.dark {
+    --color-1: hsl(0, 0%, 73%);
+    --color-2: hsl(0, 0%, 60%);
+    --color-3: hsl(0, 0%, 53%);
+    --color-4: hsla(0, 0%, 75%, 0.376);
+    --color-5: hsla(0, 0%, 84%, 0.247);
+    body {
+        background-color: black;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    font-family: "Oswald", sans-serif;
+
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+svg {
+    height: 26px;
+    width: 26px;
+    fill: var(--color-1);
+}
+
+.btn {
+    padding: 0.8rem;
+    display: flex;
+    border-radius: 50%;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-1);
+    cursor: pointer;
+    position: absolute;
+    background: var(--color-5);
+    transition: background 0.2s, opacity 0.2s;
+
+    &:hover {
+        background: var(--color-4);
+    }
+}
+
+.themeToggle {
+    top: 50px;
+    right: 50px;
+}
+
+.wrapper {
+    user-select: none;
+    color: var(--color-1);
+    .totalTimeWrapper {
+        display: grid;
+        grid-template-rows: 1fr;
+        transition: grid-template-rows 0.5s, background-color 0.2s, padding 0.2s;
+        background-color: var(--color-5);
+        padding-block: 2rem;
+        border-radius: 25px;
+    }
+    .totalTime {
+        display: grid;
+        place-items: center;
+
+        overflow: hidden;
+
+        .title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--color-3);
+        }
+
+        .totalDaysCount {
+            font-size: 10rem;
+            line-height: 0.9;
+            font-style: 600;
+        }
+
+        .hoursAndMins {
+            color: var(--color-3);
+            font-size: 1.1rem;
+            span {
+                font-weight: 600;
+                color: var(--color-2);
+            }
+        }
+    }
+
+    .timeWrapper {
+        display: flex;
+        cursor: pointer;
+    }
+
+    .time,
+    .colon {
+        font-size: 10rem;
+        font-weight: 700;
+    }
+
+    .time {
+        display: flex;
+        span {
+            text-align: center;
+            display: block;
+            width: 90px;
+        }
+    }
+
+    .reset {
+        bottom: 50px;
+        left: 50px;
+    }
+
+    .colon {
+        height: 100px;
+        align-self: center;
+        line-height: 0.4;
+        text-align: center;
+        padding-inline: 1rem;
+        color: var(--color-4);
+        // font-family: serif;
+        font-family: serif;
+    }
+
+    &.counting {
+        .totalTimeWrapper {
+            grid-template-rows: 0fr;
+            padding: 0;
+            background-color: transparent;
+        }
+
+        .colon {
+            animation: blink 5s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        .btn {
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
